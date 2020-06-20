@@ -1,10 +1,15 @@
 <template>
   <div id="app">
-    <Main />
+    <!-- <router-link to="/">
+      Home
+    </router-link> | <router-link to="/medium">
+      Medium
+    </router-link> -->
+    <router-view />
   </div>
 </template>
 
-<style> 
+<style>
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;

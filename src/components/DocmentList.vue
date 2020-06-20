@@ -1,10 +1,16 @@
 <template>
   <div class="hello">
-    <h1>Test task for linkalong</h1>
+    <h1>Documents list</h1>
     <ol>
-      <li v-for='text in texts' v-bind:key="text.id">{{ text.preview }}</li>
+      <router-link
+        v-for='text in texts'
+        v-bind:key="text.id"
+        v-bind:to="{ name: 'document.edit', params: { id: text.id }}"
+      >
+        <li>{{ text.preview }}</li>
+      </router-link>
     </ol>
-    <div>{{ texts }}</div>
+    <!-- <div>{{ texts }}</div> -->
     <div>
       <textarea v-model="newText" placeholder="paste text"></textarea>
       <button v-on:click="counter += 1">Save</button>
@@ -16,7 +22,7 @@
 import { listTexts, createText } from '../service/api.js'
 
 export default {
-  name: 'Main',
+  name: 'DocmentList',
   async created() {
     const response = await listTexts();
     this.texts = response.data.texts;

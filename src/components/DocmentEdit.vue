@@ -1,36 +1,32 @@
 <template>
   <div class="hello">
-    <h1>Test task for linkalong</h1>
+    <h1>Document details</h1>
     <ol>
-      <li v-for='text in texts' v-bind:key="text.id">{{ text.preview }}</li>
+      <li
+        v-for='sentence in text.sentences'
+        v-bind:key="sentence.sentence_id"
+      >
+        <router-link v-bind:to="{ name: 'search', query: { textId: text.id, sentenceId: sentence.sentence_id }}">
+          {{ sentence.sentence }}
+        </router-link>
+      </li>
     </ol>
-    <div>{{ texts }}</div>
-    <div>
-      <textarea v-model="newText" placeholder="paste text"></textarea>
-      <button v-on:click="counter += 1">Save</button>
-    </div>
+    <!-- <div>{{ text }}</div> -->
   </div>
 </template>
 
 <script>
-import { listTexts, createText } from '../service/api.js'
+import { getText } from '../service/api.js'
 
 export default {
-  name: 'Main',
+  name: 'DocmentEdit',
   async created() {
-    const response = await listTexts();
-    this.texts = response.data.texts;
+    const response = await getText(this.$attrs.id);
+    this.text = response.data;
   },
   data: () => ({
-    texts: [],
-    newText: ''
+    text: {},
   }),
-  methods: {
-    saveText: async () => {
-      await createText(this.newText);
-      this.newText = '';
-    }
-  }
 }
 </script>
 

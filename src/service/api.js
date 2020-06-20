@@ -18,3 +18,8 @@ export async function getText(textId) {
 
   return response;
 }
+export async function searchText(textId, sentenceId) {
+  const response = await axios.get(`${url}/text/${textId}/${sentenceId}/similar`);
+
+  return response;
+}

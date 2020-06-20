@@ -1,21 +1,32 @@
 import DocmentList from './components/DocmentList.vue'
 import DocmentEdit from './components/DocmentEdit.vue'
+import Search from './components/Search.vue'
 
 const routes = [
-    {
-        path: '/',
-        name: 'DocmentList',
-        component: DocmentList
-    },
+    // {
+    //     path: '/',
+    //     name: 'document',
+    //     component: DocmentList,
+    //     redirect: {
+    //       name: 'activate.create_schedule'
+    //     },
+    // },
     {
         path: '/text',
-        name: 'DocmentList',
+        name: 'document.list',
         component: DocmentList
     },
     {
         path: '/text/:id',
-        name: 'DocmentEdit',
-        component: DocmentEdit
+        name: 'document.edit',
+        component: DocmentEdit,
+        props: true
+    },
+    {
+        path: '/search',
+        name: 'search',
+        component: Search,
+        props: true
     }
 ];
 

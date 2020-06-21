@@ -2,7 +2,7 @@ name: Deploy to DigitalOcean
 
 on:
   push:
-    branches: 
+    branches:
       - development
 # on:
 #   pull_request:
@@ -22,7 +22,7 @@ jobs:
     - name: Install yarn and run unittest
       run: |
         yarn
-        yarn test
+        yarn lint
       env:
         CI: true
     - name: Publish to Github Packages Registry

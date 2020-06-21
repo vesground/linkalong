@@ -12,7 +12,6 @@
         / {{ sentence.similarity }}
       </li>
     </ol>
-    <!-- <div>{{ texts }}</div> -->
   </div>
 </template>
 

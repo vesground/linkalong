@@ -11,7 +11,7 @@ Vue.config.productionTip = false
 Vue.use(VueRouter);
 
 // Configure router
-const router = new VueRouter({
+export const router = new VueRouter({
     routes,
     // linkActiveClass: 'active',
     mode: 'history'

@@ -2,24 +2,22 @@
   <div class="hello">
     <h1>Documents list</h1>
     <ol>
-      <router-link
-        v-for='text in texts'
-        v-bind:key="text.id"
-        v-bind:to="{ name: 'document.edit', params: { id: text.id }}"
-      >
-        <li>{{ text.preview }}</li>
-      </router-link>
+      <li v-for='text in texts' v-bind:key="text.id">
+        <router-link v-bind:to="{ name: 'document.edit', params: { id: text.id }}">
+          {{ text.preview }}
+        </router-link>
+      </li>
     </ol>
-    <!-- <div>{{ texts }}</div> -->
     <div>
       <textarea v-model="newText" placeholder="paste text"></textarea>
-      <button v-on:click="counter += 1">Save</button>
+      <button v-on:click="saveText">Save</button>
     </div>
   </div>
 </template>
 
 <script>
-import { listTexts, createText } from '../service/api.js'
+import { listTexts, createText } from '../service/api.js';
+import { router } from '../main.js';
 
 export default {
   name: 'DocmentList',
@@ -32,9 +30,10 @@ export default {
     newText: ''
   }),
   methods: {
-    saveText: async () => {
-      await createText(this.newText);
+    async saveText() {
+      const response = await createText(this.newText);
       this.newText = '';
+      router.push(`text/${response.data.id}`);
     }
   }
 }
@@ -42,20 +41,18 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-h3 {
-  margin: 40px 0 0;
+textarea, button {
+  margin-right: auto;
+  display: block;
 }
 ol {
   text-align: start;
-  margin-left: 15px;
+  margin-left: 20px;
   padding: 0;
 }
 li {
   list-style-type: decimal;
   margin: 0 10px;
   padding: 10px 0;
-}
-a {
-  color: #42b983;
 }
 </style>

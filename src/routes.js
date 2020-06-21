@@ -3,14 +3,12 @@ import DocmentEdit from './components/DocmentEdit.vue'
 import Search from './components/Search.vue'
 
 const routes = [
-    // {
-    //     path: '/',
-    //     name: 'document',
-    //     component: DocmentList,
-    //     redirect: {
-    //       name: 'activate.create_schedule'
-    //     },
-    // },
+    {
+        path: '/',
+        redirect: {
+          name: 'document.list'
+        },
+    },
     {
         path: '/text',
         name: 'document.list',
@@ -31,14 +29,3 @@ const routes = [
 ];
 
 export default routes;
-
-
-// // Import components
-// import page1Component from './page-1.vue';
-// import page2Component from './page-2.vue';
-//
-// const routes = [
-//     { path: '/', component: require('./index.vue').default },
-//     { path: '/page-1', component: require('./page-1.vue').default },
-//     { path: '/purchase', component: require('./page-2.vue').default }
-// ];

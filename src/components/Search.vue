@@ -3,7 +3,7 @@
     <h1>Search result for "{{ sentence }}"</h1>
     <ol>
       <li
-        v-for='sentence in similarSentences'
+        v-for='sentence in uniqueSentence'
         v-bind:key="sentence.sentence_id"
       >
         <router-link v-bind:to="{ name: 'document.edit', params: { id: sentence.text_id }}">
@@ -23,19 +23,18 @@ export default {
   name: 'Search',
   async created() {
     const response = await searchText(this.$route.query.textId, this.$route.query.sentenceId);
+
+    const uniqueSentence = response.data.similar_sentences.reduce((unique, item) => {
+      const hasItem = unique.find(elm => elm.text_id == item.text_id);
+      return hasItem ? unique : [...unique, item];
+    }, []);
+
     this.sentence = response.data.sentence;
-    this.similarSentences = response.data.similar_sentences;
+    this.uniqueSentence = uniqueSentence;
   },
   data: () => ({
-    "sentence": "string",
-    "similarSentences": [
-      {
-        "text_id": "string",
-        "sentence_id": 0,
-        "sentence": "string",
-        "similarity": 0
-      }
-    ]
+    sentence: "",
+    uniqueSentence: []
   }),
 }
 </script>

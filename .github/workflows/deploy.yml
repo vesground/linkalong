@@ -1,12 +1,14 @@
 name: Deploy to DigitalOcean
 
-on:
-  push:
-    branches:
-      - development
 # on:
-#   pull_request:
-#     branches: [ master ]
+#   push:
+#     branches:
+#       - development
+on:
+  pull_request:
+    branches:
+      - master
+
 #     - name: Build the Docker image
 #       run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
 
@@ -22,7 +24,6 @@ jobs:
     - name: Install yarn and run unittest
       run: |
         yarn
-        yarn lint
       env:
         CI: true
     - name: Publish to Github Packages Registry

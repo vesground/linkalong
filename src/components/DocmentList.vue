@@ -17,7 +17,7 @@
 
 <script>
 import { listTexts, createText } from '../service/api.js';
-import { router } from '../main.js';
+import { router } from '../router.js';
 
 export default {
   name: 'DocmentList',

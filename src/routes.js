@@ -28,4 +28,7 @@ const routes = [
     }
 ];
 
+// { path: routes.pages.main, component: () => import('./client/components/Main.vue') },
+// { path: routes.pages.about, component: () => import('./client/components/About.vue') },
+
 export default routes;

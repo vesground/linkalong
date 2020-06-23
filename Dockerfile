@@ -1,22 +1,11 @@
-FROM node:lts-alpine
+FROM node:13.7-alpine as build
 
-# устанавливаем простой HTTP-сервер для статики
-RUN npm install -g http-server
-
-# делаем каталог 'app' текущим рабочим каталогом
-WORKDIR /app
-
-# копируем оба 'package.json' и 'package-lock.json' (если есть)
+WORKDIR /usr/src/app
 COPY package*.json ./
+RUN yarn cache clean && yarn --update-checksums
+COPY . ./
+RUN yarn && yarn build
 
-# устанавливаем зависимости проекта
-RUN npm install
-
-# копируем файлы и каталоги проекта в текущий рабочий каталог (т.е. в каталог 'app')
-COPY . .
-
-# собираем приложение для production с минификацией
-RUN npm run build
 
 EXPOSE 3000
-CMD [ "http-server", "dist" ]
+CMD ["yarn", "start"]

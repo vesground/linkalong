@@ -1,6 +1,6 @@
-import DocmentList from './components/DocmentList.vue'
-import DocmentEdit from './components/DocmentEdit.vue'
-import Search from './components/Search.vue'
+import DocmentList from 'routes/DocumentList/index.vue'
+import DocmentEdit from 'routes/DocmentEdit.vue'
+import Search from 'routes/Search.vue'
 
 const routes = [
     {

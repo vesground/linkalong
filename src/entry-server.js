@@ -6,7 +6,7 @@ export default context =>
     // const { app, router, store } = createApp();
     const meta = app.$meta();
 
-    console.log('meta', meta.inject());
+    // console.log('meta', meta.inject());
 
     // set server-side router's location
     router.push(context.url);

@@ -16,7 +16,7 @@
 </template>
 
 <script>
-import { getText } from '../service/api.js'
+import { getText } from 'service/api.js'
 
 export default {
   name: 'DocmentEdit',
@@ -30,22 +30,23 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h3 {
-  margin: 40px 0 0;
-}
-ol {
-  text-align: start;
-  margin-left: 15px;
-  padding: 0;
-}
-li {
-  list-style-type: decimal;
-  margin: 0 10px;
-  padding: 10px 0;
-}
-a {
-  color: #42b983;
-}
+<style lang='scss' scoped>
+  @import './DocumentEdit.scss';
+
+  h3 {
+    margin: 40px 0 0;
+  }
+  ol {
+    text-align: start;
+    margin-left: 15px;
+    padding: 0;
+  }
+  li {
+    list-style-type: decimal;
+    margin: 0 10px;
+    padding: 10px 0;
+  }
+  a {
+    color: #42b983;
+  }
 </style>

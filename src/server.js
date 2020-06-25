@@ -37,6 +37,8 @@ server.get('*', (req, res) => {
       }
     }
 
+    // console.log('html', html);
+
     res.end(html);
   });
 });

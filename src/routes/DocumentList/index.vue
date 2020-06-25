@@ -16,8 +16,7 @@
 </template>
 
 <script>
-import { listTexts, createText } from '../service/api.js';
-import { router } from '../router.js';
+import { listTexts, createText } from 'service/api.js';
 
 export default {
   name: 'DocmentList',
@@ -33,26 +32,13 @@ export default {
     async saveText() {
       const response = await createText(this.newText);
       this.newText = '';
-      router.push(`text/${response.data.id}`);
+      this.$router.push(`text/${response.data.id}`);
     }
   }
 }
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-textarea, button {
-  margin-right: auto;
-  display: block;
-}
-ol {
-  text-align: start;
-  margin-left: 20px;
-  padding: 0;
-}
-li {
-  list-style-type: decimal;
-  margin: 0 10px;
-  padding: 10px 0;
-}
+<style lang='scss' scoped>
+  @import './index.scss';
 </style>

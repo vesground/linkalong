@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 const url = 'https://test-backend.sempi.tech/v1';
 
 export async function listTexts() {

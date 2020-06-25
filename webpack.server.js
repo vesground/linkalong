@@ -23,12 +23,40 @@ module.exports = merge(baseConfig, {
     rules: [
       {
         test: /\.css$/,
-        loader: 'css-loader',
-        options: {
-          modules: {
-            localIdentName: '[local]_[hash:base64:8]',
+        use:[
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                localIdentName: '[local]_[hash:base64:8]',
+              },
+            },
           },
-        },
+        ]
+      },
+      {
+        test: /\.s[ac]ss$/i,
+        use: [
+          // 'style-loader',
+          // 'css-loader',
+          {
+            loader: 'css-loader',
+            options: {
+              modules: {
+                localIdentName: '[local]_[hash:base64:8]',
+              },
+            },
+          },
+          {
+            loader: 'sass-loader',
+            options: {
+              implementation: require('sass'),
+              sassOptions: {
+                fiber: require('fibers'),
+              },
+            },
+          },
+        ],
       },
     ],
   },

@@ -3,7 +3,7 @@
     <IconBase :iconName="icon.name">
       <component v-bind:is="icon.body" />
     </IconBase>
-    <TextField>{{ item.preview }}</TextField>
+    <TextField>{{ item.text }}</TextField>
   </div>
 </template>
 

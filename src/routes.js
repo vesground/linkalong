@@ -1,6 +1,6 @@
-import DocmentList from 'routes/DocumentList/index.vue'
-import DocmentEdit from 'routes/DocmentEdit.vue'
-import Search from 'routes/Search.vue'
+import DocumentList from 'routes/DocumentList/index.vue';
+import DocumentEdit from 'routes/DocumentEdit/index.vue';
+import Search from 'routes/Search.vue';
 
 const routes = [
     {
@@ -12,12 +12,12 @@ const routes = [
     {
         path: '/text',
         name: 'document.list',
-        component: DocmentList
+        component: DocumentList
     },
     {
         path: '/text/:id',
         name: 'document.edit',
-        component: DocmentEdit,
+        component: DocumentEdit,
         props: true
     },
     {

@@ -4,9 +4,9 @@
       <TextField>Documents</TextField>
       <Button :handleClick="openModal">Create New Document</Button>
     </div>
-    <List :items='texts' :icon="icon" :handleClick='openDocumentDetails' />
+    <List :items='items' :icon="icon" :handleClick='openDocumentDetails' />
     <div>
-      <textarea v-model="newText" placeholder="paste text"></textarea>
+      <textarea v-model="newDocument" placeholder="paste text"></textarea>
       <button v-on:click="saveText">Save</button>
     </div>
   </div>
@@ -17,31 +17,40 @@
   import Button from 'components/Button/index.vue';
   import List from 'components/List/index.vue';
   import DocumentIcon from 'icons/DocumentIcon.vue';
+
   import { listTexts, createText } from 'service/api.js';
+  import { parseBySchema } from 'service/utils.js';
+  import { DOCUMENT_SCHEMA } from 'service/enums.js';
+
 
   export default {
     name: 'DocmentList',
     async created() {
       const response = await listTexts();
-      this.texts = response.data.texts;
+      console.log('response.data.texts', response);
+      this.documents = response.data.texts;
     },
     computed: {
-      icon: () => ({ name: 'documentList', body: DocumentIcon })
+      icon: () => ({ name: 'documentList', body: DocumentIcon }),
+      // items() {
+      //   console.log('this.documents', this.documents);
+      //   return this.documents?.map(doc => parseBySchema({ schema: DOCUMENT_SCHEMA, initValues: doc }))  || [];
+      // }
     },
     data: () => ({
-      texts: [],
-      newText: ''
+      documents: [],
+      newDocument: ''
     }),
     components: { TextField, Button, List },
     methods: {
       async saveText() {
-        const response = await createText(this.newText);
-        this.newText = '';
+        const response = await createText(this.newDocument);
+        this.newDocument = '';
         this.$router.push(`text/${response.data.id}`);
       },
       openModal() {},
       openDocumentDetails(documentId) {
-        this.$router.push(`text/${documentId}`);
+        this.$router.push({ name: 'document.edit', params: { id: documentId }});
       }
     }
   }

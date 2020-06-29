@@ -1,0 +1,11 @@
+.document-list {
+  .header {
+    display: flex;
+    > .text {
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 48px;
+      color: var(--primary-text-color);
+    }
+  }
+}

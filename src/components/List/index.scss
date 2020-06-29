@@ -1,0 +1,17 @@
+.list {
+  margin: 24px 0;
+  .header {
+    display: flex;
+  }
+}
+
+ol {
+  text-align: start;
+  margin-left: 20px;
+  padding: 0;
+}
+li {
+  list-style-type: decimal;
+  margin: 0 10px;
+  padding: 10px 0;
+}

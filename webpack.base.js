@@ -51,6 +51,15 @@ let config = {
           },
         },
       },
+      {
+        test: /\.(ttf|woff(2)?)(\?.*)?$/,
+        use: {
+          loader: 'url-loader',
+          options: {
+            limit: 8192,
+          },
+        }
+      }
     ],
   },
   plugins: [

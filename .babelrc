@@ -10,6 +10,9 @@
     ],
     ["babel-plugin-module-resolver", {
       "root": "./src",
+      "alias": {
+        "public": "./public"
+      }
     }]
  ]
 }

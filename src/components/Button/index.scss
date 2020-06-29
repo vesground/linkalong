@@ -1,0 +1,21 @@
+.button {
+  height: fit-content;
+  padding: 12px 40px;
+  border: 1px solid var(--highlight-text-color);
+  box-sizing: border-box;
+  border-radius: 24px;
+  background: white;
+  > .text {
+    font-weight: 700;
+    line-height: 24px;
+    color: var(--highlight-text-color);
+  }
+
+  &:hover {
+    cursor: pointer;
+    background: var(--highlight-text-color);
+    > .text {
+      color: white;
+    }
+  }
+}

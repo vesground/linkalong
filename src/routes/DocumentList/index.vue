@@ -4,11 +4,11 @@
       <TextField>Documents</TextField>
       <Button :handleClick="openModal">Create New Document</Button>
     </div>
-    <List :items='items' :icon="icon" :handleClick='openDocumentDetails' />
-    <div>
+    <List type='Document' :items='items' :icon="icon" :handleClick='openDocumentDetails' />
+    <!-- <div>
       <textarea v-model="newDocument" placeholder="paste text"></textarea>
       <button v-on:click="saveText">Save</button>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -41,11 +41,11 @@
     }),
     components: { TextField, Button, List },
     methods: {
-      async saveText() {
-        const response = await createText(this.newDocument);
-        this.newDocument = '';
-        this.$router.push(`text/${response.data.id}`);
-      },
+      // async saveText() {
+      //   const response = await createText(this.newDocument);
+      //   this.newDocument = '';
+      //   this.$router.push(`text/${response.data.id}`);
+      // },
       openModal() {},
       openDocumentDetails(documentId) {
         this.$router.push({ name: 'document.edit', params: { id: documentId }});

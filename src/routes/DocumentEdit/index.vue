@@ -3,7 +3,7 @@
     <div class='header'>
       <TextField>Document Details</TextField>
     </div>
-    <List :items='items' :icon="icon" :handleClick='searchForDocmument' />
+    <List type='Sentence' :items='items' :icon="icon" :handleClick='searchForDocmument' />
   </div>
 </template>
 
@@ -34,8 +34,7 @@
     components: { TextField, List },
     methods: {
       searchForDocmument(sentenceId) {
-        // Doesn`t clear why router combine paths
-        this.$router.push({ name: 'document.edit', query: { textId: document.id, sentenceId }});
+        this.$router.push({ name: 'search', query: { textId: this.document.id, sentenceId }});
       }
     }
   }

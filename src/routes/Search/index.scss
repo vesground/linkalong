@@ -1,0 +1,15 @@
+.search-list {
+  .header {
+    text-align: left;
+    > .text {
+      display: inline;
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 48px;
+      color: var(--highlight-text-color);
+      &:first-child {
+        color: var(--primary-text-color);
+      }
+    }
+  }
+}

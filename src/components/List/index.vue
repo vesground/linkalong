@@ -1,8 +1,8 @@
 <template>
   <div class='list'>
     <div class='header'>
-      <TextField text='Type' />
-      <TextField text='Document Preview' />
+      <TextField>Type</TextField>
+      <TextField>{{ type }}</TextField>
     </div>
     <div class='items'>
       <Item v-for='item in items' v-bind:key="item.id" :item='item' :icon='icon' :handleClick="handleClick" />
@@ -17,6 +17,10 @@
   export default {
     name: 'List',
     props: {
+      type: {
+        type: String,
+        required: true
+      },
       icon: {
         type: Object,
         required: true

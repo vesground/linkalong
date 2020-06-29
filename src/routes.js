@@ -1,6 +1,6 @@
 import DocumentList from 'routes/DocumentList/index.vue';
 import DocumentEdit from 'routes/DocumentEdit/index.vue';
-import Search from 'routes/Search.vue';
+import Search from 'routes/Search/index.vue';
 
 const routes = [
     {
@@ -10,12 +10,12 @@ const routes = [
         },
     },
     {
-        path: '/text',
+        path: '/document',
         name: 'document.list',
         component: DocumentList
     },
     {
-        path: '/text/:id',
+        path: '/document/:id',
         name: 'document.edit',
         component: DocumentEdit,
         props: true
@@ -24,7 +24,13 @@ const routes = [
         path: '/search',
         name: 'search',
         component: Search,
-        props: true
+        props: true,
+        meta: {
+          breadcrumb: [
+            { name: 'Area 1', link: 'area11' },
+            { name: 'Area 2' }
+          ]
+        }
     }
 ];
 

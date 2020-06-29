@@ -1,13 +1,13 @@
 name: Deploy to DigitalOcean
 
-# on:
-#   push:
-#     branches:
-#       - development
 on:
-  pull_request:
+  push:
     branches:
-      - master
+      - development
+# on:
+#   pull_request:
+#     branches:
+#       - master
 
 #     - name: Build the Docker image
 #       run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)

@@ -25,7 +25,7 @@
     computed: {
       icon: () => ({ name: 'documentEdit', body: SentenceIcon }),
       items() {
-        return  this.document?.sentences?.map(text => parseBySchema({ schema: SENTENCE_SCHEMA, initValues: text }))  || [];
+        return  this.document?.sentences?.map(sentence => parseBySchema({ schema: SENTENCE_SCHEMA, initValues: sentence }))  || [];
       }
     },
     data: () => ({

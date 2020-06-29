@@ -27,15 +27,13 @@
     name: 'DocmentList',
     async created() {
       const response = await listTexts();
-      console.log('response.data.texts', response);
       this.documents = response.data.texts;
     },
     computed: {
       icon: () => ({ name: 'documentList', body: DocumentIcon }),
-      // items() {
-      //   console.log('this.documents', this.documents);
-      //   return this.documents?.map(doc => parseBySchema({ schema: DOCUMENT_SCHEMA, initValues: doc }))  || [];
-      // }
+      items() {
+        return this.documents?.map(doc => parseBySchema({ schema: DOCUMENT_SCHEMA, initValues: doc }))  || [];
+      }
     },
     data: () => ({
       documents: [],

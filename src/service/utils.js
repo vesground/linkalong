@@ -2,8 +2,6 @@
 export const parseBySchema = ({ schema, initValues = {}, newValues = {} }) => {
   let mappedObj = {};
 
-  debugger;
-
   for (const key in initValues) {
     const newKey = schema[key];
 
@@ -13,11 +11,7 @@ export const parseBySchema = ({ schema, initValues = {}, newValues = {} }) => {
       const keyValue = newKey(initValues[key], newValues[key]);
       mappedObj = { ...mappedObj, ...keyValue };
     };
-
-    debugger;
   };
-
-  debugger;
 
   return mappedObj;
 };

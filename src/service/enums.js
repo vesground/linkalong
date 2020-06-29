@@ -1,9 +1,9 @@
-const DOCUMENT_SCHEMA = {
-  id: 'id',
-  preview: 'text',
+export const DOCUMENT_SCHEMA = {
+  'id': 'id',
+  'preview': 'text',
 };
 
-const SENTENCE_SCHEMA = {
-  id: 'sentence_id',
-  preview: 'sentence',
+export const SENTENCE_SCHEMA = {
+  sentence_id: 'id',
+  sentence: 'text',
 };

@@ -34,7 +34,7 @@
     components: { TextField, List },
     methods: {
       searchForDocmument(sentenceId) {
-        this.$router.push({ name: 'search', query: { textId: this.document.id, sentenceId }});
+        this.$router.push({ name: 'search', query: { sentenceId }});
       }
     }
   }

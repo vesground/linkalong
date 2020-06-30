@@ -1,6 +1,6 @@
 <template>
   <div id="app" class='app'>
-    <!-- <Breadcrumbs /> -->
+    <Breadcrumbs />
     <router-view />
   </div>
 </template>

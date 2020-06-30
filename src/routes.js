@@ -12,29 +12,26 @@ const routes = [
     {
         path: '/document',
         name: 'document.list',
-        component: DocumentList
+        component: DocumentList,
+        breadcrumb: {
+          show: false,
+          title: 'Documents'
+        },
     },
     {
         path: '/document/:id',
         name: 'document.edit',
         component: DocumentEdit,
+        breadcrumb: 'Document Details',
         props: true
     },
     {
-        path: '/search',
+        path: '/document/:id/search',
         name: 'search',
         component: Search,
+        breadcrumb: 'Search result',
         props: true,
-        meta: {
-          breadcrumb: [
-            { name: 'Area 1', link: 'area11' },
-            { name: 'Area 2' }
-          ]
-        }
     }
 ];
-
-// { path: routes.pages.main, component: () => import('./client/components/Main.vue') },
-// { path: routes.pages.about, component: () => import('./client/components/About.vue') },
 
 export default routes;

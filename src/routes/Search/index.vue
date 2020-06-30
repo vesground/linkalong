@@ -1,7 +1,7 @@
 <template>
   <div class="search-list">
     <div class='header'>
-      <TextField>Search result for:</TextField>
+      <TextField>Search result for: </TextField>
       <TextField>"{{ sentence }}"</TextField>
     </div>
     <List type='Sentence' :items='items' :icon="icon" :handleClick='openDocumentDetails' />
@@ -20,7 +20,8 @@
   export default {
     name: 'Search',
     async created() {
-      const response = await searchText(this.$route.query.textId, this.$route.query.sentenceId);
+      const { params, query } = this.$route;
+      const response = await searchText(params.id, query.sentenceId);
 
       this.sentence = response.data.sentence;
       this.foundSentences = response.data.similar_sentences;

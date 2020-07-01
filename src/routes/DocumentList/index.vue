@@ -3,12 +3,9 @@
     <div class='header'>
       <TextField>Documents</TextField>
       <Button :handleClick="openModal">Create New Document</Button>
+      <CreateDocumentModal :isOpen='isModalOpen' :close="closeModal" />
     </div>
     <List type='Document' :items='items' :icon="icon" :handleClick='openDocumentDetails' />
-    <!-- <div>
-      <textarea v-model="newDocument" placeholder="paste text"></textarea>
-      <button v-on:click="saveText">Save</button>
-    </div> -->
   </div>
 </template>
 
@@ -17,6 +14,7 @@
   import Button from 'components/Button/index.vue';
   import List from 'components/List/index.vue';
   import DocumentIcon from 'icons/DocumentIcon.vue';
+  import CreateDocumentModal from 'routes/DocumentList/CreateDocumentModal/index.vue';
 
   import { listTexts, createText } from 'service/api.js';
   import { parseBySchema } from 'service/utils.js';
@@ -37,16 +35,16 @@
     },
     data: () => ({
       documents: [],
-      newDocument: ''
+      isModalOpen: false
     }),
-    components: { TextField, Button, List },
+    components: { TextField, Button, List, CreateDocumentModal },
     methods: {
-      // async saveText() {
-      //   const response = await createText(this.newDocument);
-      //   this.newDocument = '';
-      //   this.$router.push(`text/${response.data.id}`);
-      // },
-      openModal() {},
+      openModal() {
+        this.isModalOpen = true;
+      },
+      closeModal() {
+        this.isModalOpen = false;
+      },
       openDocumentDetails(documentId) {
         this.$router.push({ name: 'document.edit', params: { id: documentId }});
       }
@@ -54,7 +52,6 @@
   }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang='scss' scoped>
   @import './index.scss';
 </style>

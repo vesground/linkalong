@@ -1,6 +1,6 @@
 .list {
   margin: 24px 0;
-  .header {
+  > .header {
     display: flex;
     margin-bottom: 16px;
 
@@ -14,4 +14,9 @@
       }
     }
   }
+  // > .items {
+  //   overflow-y: auto;
+  //   max-height: calc(100vh - 224px);
+  //   padding: 8px;
+  // }
 }

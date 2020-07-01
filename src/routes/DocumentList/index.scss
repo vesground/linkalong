@@ -11,4 +11,14 @@
       color: var(--primary-text-color);
     }
   }
+  > .list {
+    .header {
+      background: green;
+    }
+    .items {
+      overflow: auto;
+      max-height: calc(100vh - 224px);
+      padding: 8px;
+    }
+  }
 }

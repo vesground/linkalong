@@ -5,6 +5,7 @@
     viewBox="0 0 24 24"
     :aria-labelledby="iconName"
     role="presentation"
+    @click='handleClick'
   >
     <title :id="iconName" lang="en">{{iconName}} icon</title>
     <g :fill="iconColor">
@@ -15,6 +16,7 @@
 
 <script>
 export default {
+  name: 'IconBase',
   props: {
     iconName: {
       type: String,
@@ -31,7 +33,9 @@ export default {
     iconColor: {
       type: String,
       default: '#fff'
-      // default: 'currentColor'
+    },
+    handleClick: {
+      type: Function,
     }
   }
 }

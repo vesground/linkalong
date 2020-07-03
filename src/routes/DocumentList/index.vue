@@ -17,6 +17,7 @@
   import CreateDocumentModal from 'routes/DocumentList/CreateDocumentModal/index.vue';
 
   import { listTexts, createText } from 'service/api.js';
+  import DocumentAPI from 'service/api/document.js';
   import { parseBySchema } from 'service/utils.js';
   import { DOCUMENT_SCHEMA } from 'service/enums.js';
 
@@ -24,7 +25,8 @@
   export default {
     name: 'DocmentList',
     async created() {
-      const response = await listTexts();
+      const response = await DocumentAPI.list(this.setData);
+      // const response = await listTexts();
       this.documents = response.data.texts;
     },
     computed: {
@@ -39,6 +41,9 @@
     }),
     components: { TextField, Button, List, CreateDocumentModal },
     methods: {
+      setData(data) {
+        this.data = data;
+      }
       openModal() {
         this.isModalOpen = true;
       },

@@ -36,6 +36,7 @@ export default {
     },
     handleClick: {
       type: Function,
+      default: () => {}
     }
   }
 }

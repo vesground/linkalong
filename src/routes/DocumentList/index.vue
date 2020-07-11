@@ -25,8 +25,7 @@
   export default {
     name: 'DocmentList',
     async created() {
-      const response = await DocumentAPI.list(this.setData);
-      // const response = await listTexts();
+      const response = await listTexts();
       this.documents = response.data.texts;
     },
     computed: {
@@ -41,9 +40,6 @@
     }),
     components: { TextField, Button, List, CreateDocumentModal },
     methods: {
-      setData(data) {
-        this.data = data;
-      }
       openModal() {
         this.isModalOpen = true;
       },

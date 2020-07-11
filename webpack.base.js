@@ -13,12 +13,6 @@ const terserPluginOptions = {
   },
 };
 
-// const googleFontsPluginOptions = {
-//   fonts: [
-//     { family: "Montserrat", variants: [ "400", "700" ] }
-//   ]
-// };
-
 const isProduction = process.env.NODE_ENV === 'production';
 
 let config = {
@@ -66,8 +60,7 @@ let config = {
     new VueLoaderPlugin(),
     new webpack.DefinePlugin({
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV),
-    }),
-    // new GoogleFontsPlugin(googleFontsPluginOptions)
+    })
   ],
 };
 

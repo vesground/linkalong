@@ -36,7 +36,7 @@ let config = merge(baseConfig, {
       {
         test: /\.s[ac]ss$/i,
         use: [
-          'style-loader',
+          isProduction ? MiniCssExtractPlugin.loader : 'vue-style-loader',
           'css-loader',
           {
             loader: 'sass-loader',

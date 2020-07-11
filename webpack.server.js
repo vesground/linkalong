@@ -1,13 +1,12 @@
 const merge = require('webpack-merge');
 const nodeExternals = require('webpack-node-externals');
 const VueSSRServerPlugin = require('vue-server-renderer/server-plugin');
+
 const baseConfig = require('./webpack.base.js');
 
 module.exports = merge(baseConfig, {
   entry: './src/entry-server.js',
-
   target: 'node',
-
   devtool: 'source-map',
 
   output: {
@@ -15,47 +14,27 @@ module.exports = merge(baseConfig, {
   },
 
   externals: nodeExternals({
-    whitelist: /\.css$/,
+    whitelist: /\.scss$/,
   }),
 
-  plugins: [new VueSSRServerPlugin()],
+  plugins: [
+    new VueSSRServerPlugin()
+  ],
   module: {
     rules: [
       {
         test: /\.css$/,
         use:[
-          {
-            loader: 'css-loader',
-            options: {
-              modules: {
-                localIdentName: '[local]_[hash:base64:8]',
-              },
-            },
-          },
+          'vue-style-loader',
+          'css-loader',
         ]
       },
       {
-        test: /\.s[ac]ss$/i,
+        test: /\.scss$/,
         use: [
-          // 'style-loader',
-          // 'css-loader',
-          {
-            loader: 'css-loader',
-            options: {
-              modules: {
-                localIdentName: '[local]_[hash:base64:8]',
-              },
-            },
-          },
-          {
-            loader: 'sass-loader',
-            options: {
-              implementation: require('sass'),
-              sassOptions: {
-                fiber: require('fibers'),
-              },
-            },
-          },
+          'vue-style-loader',
+          'css-loader',
+          'sass-loader',
         ],
       },
     ],

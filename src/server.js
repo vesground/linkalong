@@ -1,7 +1,5 @@
 const path = require('path');
-
 const express = require('express');
-
 const { createBundleRenderer } = require('vue-server-renderer');
 
 const template = require('fs').readFileSync(
@@ -24,23 +22,23 @@ const renderer = createBundleRenderer(serverBundle, {
 server.use('/dist', express.static(path.join(__dirname, '../dist')));
 server.use('/', express.static(path.join(__dirname, '../public')));
 
-server.get('*', (req, res) => {
+server.get('*', async (req, res) => {
   const context = { url: req.url };
 
-  renderer.renderToString(context, (err, html) => {
+  try {
+    const html = await renderer.renderToString(context);
+
+    res.end(html);
+  } catch (err) {
+    console.error(err);
     if (err) {
       if (+err.message === 404) {
         res.status(404).end('Page not found');
       } else {
-        console.log(err);
         res.status(500).end('Internal Server Error');
       }
     }
-
-    // console.log('html', html);
-
-    res.end(html);
-  });
+  }
 });
 
 server.listen(process.env.PORT || 3000);

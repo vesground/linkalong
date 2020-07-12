@@ -31,6 +31,7 @@ let config = merge(baseConfig, {
               },
             },
           },
+          'postcss-loader',
         ],
       },
       {
@@ -38,15 +39,8 @@ let config = merge(baseConfig, {
         use: [
           isProduction ? MiniCssExtractPlugin.loader : 'vue-style-loader',
           'css-loader',
-          {
-            loader: 'sass-loader',
-            options: {
-              implementation: require('sass'),
-              sassOptions: {
-                fiber: require('fibers'),
-              },
-            },
-          },
+          'postcss-loader',
+          'sass-loader'
         ],
       },
     ],

@@ -37,6 +37,8 @@ server.get('*', async (req, res) => {
   try {
     const html = await renderer.renderToString(context);
 
+    console.log('html', html);
+
     res.end(html);
   } catch (err) {
     console.error(err);

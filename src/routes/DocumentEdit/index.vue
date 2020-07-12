@@ -1,5 +1,5 @@
 <template>
-  <div class="document-list">
+  <div class="document-edit">
     <div class='header'>
       <TextField>Document Details</TextField>
     </div>
@@ -40,7 +40,7 @@
   }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
+// <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang='scss' scoped>
   @import './index.scss';
 </style>

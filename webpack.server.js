@@ -27,6 +27,7 @@ module.exports = merge(baseConfig, {
         use:[
           'vue-style-loader',
           'css-loader',
+          'postcss-loader',
         ]
       },
       {
@@ -34,6 +35,7 @@ module.exports = merge(baseConfig, {
         use: [
           'vue-style-loader',
           'css-loader',
+          'postcss-loader',
           'sass-loader',
         ],
       },

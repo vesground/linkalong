@@ -1,0 +1,20 @@
+$margin: 24px;
+
+.list-item {
+  padding: $margin;
+  background: #FFFFFF;
+  box-shadow: 0px 2px 16px rgba(52, 52, 52, 0.08);
+  border-radius: 8px;
+  cursor: pointer;
+
+  display: flex;
+  margin-bottom: 8px;
+
+  > .text {
+    line-height: 24px;
+    text-align: left;
+
+    margin-left: $margin;
+    max-width: calc(100% - #{$margin}*4);
+  }
+}

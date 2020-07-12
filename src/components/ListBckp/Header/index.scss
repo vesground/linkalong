@@ -1,0 +1,14 @@
+.list-header {
+  display: flex;
+  margin-bottom: 16px;
+
+  > .text {
+    line-height: 24px;
+    font-weight: 700;
+    color: var(--secondary-text-color);
+
+    &:first-child {
+      margin-right: 32px;
+    }
+  }
+}
